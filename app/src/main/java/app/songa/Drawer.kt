@@ -18,6 +18,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -57,25 +61,21 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp),
+                .height(230.dp)
+                .padding(
+                    top = 30.dp,
+                    start = 20.dp
+                )
+            ,
             horizontalArrangement = Arrangement.Start,
         ){
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-//                    .background(color = Color.Red)
-                    .padding(start = 30.dp,),
-                ){
-
+            Column {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
-                        .width(100.dp)
-                        .height(100.dp)
+                        .width(80.dp)
+                        .height(80.dp)
                         .clip(shape = CircleShape)
-//                        .padding(top=.dp)
-//                        .clip(RoundedCornerShape(50.dp))
                         .background(Color(0xFF7DCEA0), shape = CircleShape)
                         .border(
                             BorderStroke(
@@ -85,33 +85,67 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
                             shape = CircleShape
                         ),
                 ){
-//                    Spacer(modifier = Modifier.height(60.dp))
                     Image(painter = painterResource(id = R.drawable.usersample), contentDescription = "Profile Picture",
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .height(100.dp)
-                            .width(100.dp)
                     )
-                    Text("Boda Waweru",
-                        fontSize = 24.sp,
-                        fontFamily = inter,
-                        color = Color.White,
-                    )
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.dp)
-                            .background(color = Color.Blue)
-                    ){
-                        Text("Boda Waweru",
-                            fontSize = 24.sp,
-                            fontFamily = inter,
-                            color = Color.White,
-                        )
-                    }
-
                 }
+                Spacer(modifier = Modifier
+                    .height(10.dp)
+                )
+                Text("Boda Waweru",
+                    fontSize = 24.sp,
+                    fontFamily = inter,
+                    color = Color.White,
+                )
+                Text("Astrol Petrol station, Utawala, Embakasi",
+                    fontSize = 12.sp,
+                    fontFamily = inter,
+                    color = Color.White,
+                )
+                Spacer(modifier = Modifier
+                    .height(10.dp)
+                )
+                ChangeButton(navController = navController)
             }
+
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(GreenPrimary)
+                .height(110.dp)
+                .padding(
+                    top = 10.dp,
+                    start = 20.dp
+                )
+        ) {
+            Row {
+                Icon(painter = painterResource(id = R.drawable.balanceiconwhite), contentDescription = "Current Balance Icon")
+                Spacer(
+                    modifier = Modifier.width(10.dp)
+                )
+                Text("Current Balance",
+                    fontSize = 15.sp,
+                    fontFamily = inter,
+                    color = Color.White,
+                )
+            }
+            Spacer(
+                modifier = Modifier.width(15.dp)
+            )
+            Text("6,892 S.Points",
+                fontSize = 30.sp,
+                fontFamily = ibmplexsanshebrew,
+                color = Color.White,
+            )
+            Spacer(
+                modifier = Modifier.width(10.dp)
+            )
+            Text("Due 26th April 2023",
+                fontSize = 15.sp,
+                fontFamily = inter,
+                color = Color.Black,
+            )
         }
 
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -163,6 +197,33 @@ fun DrawerItem(item: NavigationItems, selected: Boolean, onItemClick: (Navigatio
             fontFamily = inter,
             fontWeight = FontWeight.Bold
 
+        )
+    }
+}
+
+@Composable
+fun ChangeButton(navController: NavController) {
+    Button(
+        onClick = {},
+        shape = RoundedCornerShape(20.dp),
+        colors = ButtonDefaults.outlinedButtonColors(
+            contentColor = Color.Black,
+            backgroundColor = Color.White,
+        )
+    ) {
+        Text(
+            text = "Change",
+            fontSize = 14.sp,
+            fontFamily = ibmplexsanshebrew,
+        )
+        Spacer(
+            modifier = Modifier.width(10.dp)
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.changeicongreen),
+            contentDescription = "Change Icon",
+            modifier = Modifier
+                .size(20.dp)
         )
     }
 }
