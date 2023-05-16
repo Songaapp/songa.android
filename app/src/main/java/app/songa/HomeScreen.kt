@@ -146,7 +146,7 @@ fun HomeScreen(navController: NavController, alpha: Float = 0.5f) {
                             .height(20.dp)
                         )
                         Button(onClick = {
-//                            navController.navigate("")
+                            navController.navigate("home_page_screen")
                         },
                             colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White, backgroundColor = GreenPrimary),
                             shape = RoundedCornerShape(10.dp),
