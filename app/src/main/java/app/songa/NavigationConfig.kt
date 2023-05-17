@@ -15,7 +15,7 @@ fun Navigation() {
     val coroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "splash_screen") {
+    NavHost(navController = navController, startDestination = "home_page_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
