@@ -1,9 +1,15 @@
 package app.songa
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.DrawerValue
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.rememberDrawerState
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,9 +20,25 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomePageScreen(navController: NavController, alfa: Float = 0.5f) {
-    mapUI()
+    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
+    val coroutineScope = rememberCoroutineScope()
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        drawerContent = {
+            Drawer(scope = coroutineScope, scaffoldState = scaffoldState, navController = navController)
+        },
+        topBar = {
+            TopBarMenu(scope = coroutineScope, scaffoldState = scaffoldState, navController= navController)
+                 },
+        drawerGesturesEnabled = true,
+        content = {
+            mapUI()
+        }
+    )
 }
 
 @Composable
