@@ -1,4 +1,4 @@
-package app.songa
+package app.songa.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,6 +31,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import app.songa.R
+import app.songa.inter
 import app.songa.ui.theme.GreenPrimary
 
 @Composable

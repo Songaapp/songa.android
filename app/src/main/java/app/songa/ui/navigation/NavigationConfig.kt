@@ -1,4 +1,4 @@
-package app.songa
+package app.songa.ui.navigation
 
 import androidx.compose.material.DrawerValue
 import androidx.compose.material.rememberDrawerState
@@ -8,6 +8,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import app.songa.LogOutScreen
+import app.songa.ui.screens.Faqs
+import app.songa.ui.screens.HomePageScreen
+import app.songa.ui.screens.HomeScreen
+import app.songa.ui.screens.InvitedFriendsScreen
+import app.songa.ui.screens.MyWalletScreen
+import app.songa.ui.screens.OnlineSupportScreen
+import app.songa.ui.screens.RideHistoryScreen
+import app.songa.ui.screens.SettingsScreen
+import app.songa.ui.screens.SplashScreen
+import app.songa.ui.screens.WebOpen
 
 @Composable
 fun Navigation() {

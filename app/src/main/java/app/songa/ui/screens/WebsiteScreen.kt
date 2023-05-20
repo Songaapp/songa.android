@@ -1,4 +1,4 @@
-package app.songa
+package app.songa.ui.screens
 
 import android.view.ViewGroup
 import android.webkit.WebView

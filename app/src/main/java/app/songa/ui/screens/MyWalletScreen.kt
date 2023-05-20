@@ -1,4 +1,4 @@
-package app.songa
+package app.songa.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
+fun MyWalletScreen(navController: NavController, alfa: Float = 0.5f) {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-        Text("Online Support Screen")
+        Text("My Wallet Screen")
     }
 }

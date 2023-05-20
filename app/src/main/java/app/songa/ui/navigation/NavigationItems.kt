@@ -1,4 +1,6 @@
-package app.songa
+package app.songa.ui.navigation
+
+import app.songa.R
 
 sealed class NavigationItems(var route: String, var icon: Int, var title: String) {
     object  Home: NavigationItems("home_page_screen", R.drawable.homeiconred, "Home")
