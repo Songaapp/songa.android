@@ -11,11 +11,9 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun Navigation() {
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Open))
-    val coroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "login_screen") {
+    NavHost(navController = navController, startDestination = "home_page_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
@@ -29,22 +27,22 @@ fun Navigation() {
             WebOpen(navController = navController, mUrl = "https://songa.app")
         }
         composable("home_page_screen") {
-            HomePageScreen(navController = navController)
+            HomePageScreen(navController = navController, "index")
         }
         composable("ride_history_screen") {
-            RideHistoryScreen(navController = navController)
+            HomePageScreen(navController = navController, "history")
         }
         composable("invite_friends_screen") {
-            InvitedFriendsScreen(navController = navController)
+            HomePageScreen(navController = navController, "invite")
         }
         composable("online_support_screen") {
-            OnlineSupportScreen(navController = navController)
+            HomePageScreen(navController = navController, "support")
         }
         composable("settings_screen") {
-            SettingsScreen(navController = navController)
+            HomePageScreen(navController = navController, "settings")
         }
         composable("my_wallet_screen") {
-            MyWalletScreen(navController = navController)
+            HomePageScreen(navController = navController, "wallet")
         }
         composable("logout_screen") {
             LogOutScreen(navController = navController)
@@ -58,5 +56,8 @@ fun Navigation() {
         composable("recover_screen") {
             RecoverScreen(navController = navController, 0.75f)
         }
+//        composable("menu_pages") {
+//            MenuPages(navController = navController)
+//        }
     }
 }

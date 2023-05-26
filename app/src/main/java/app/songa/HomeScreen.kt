@@ -1,5 +1,6 @@
 package app.songa
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.animation.OvershootInterpolator
 import androidx.annotation.ColorRes
@@ -77,9 +78,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController, alpha: Float = 0.5f) {
-    var topMenuVisible = true
     val scale = remember{
         Animatable(initialValue = 0f)
     }
@@ -93,11 +94,6 @@ fun HomeScreen(navController: NavController, alpha: Float = 0.5f) {
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
-//        scaffoldState = scaffoldState,
-//        drawerContent = {
-//            Drawer(scope = coroutineScope, scaffoldState = scaffoldState, navController = navController)
-//        },
-//        drawerGesturesEnabled = true,
         content = {
                 Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
                     Image(painter = painterResource(id = R.drawable.safeboda), contentDescription = "Safe Boda", contentScale = ContentScale.Crop, modifier = Modifier
