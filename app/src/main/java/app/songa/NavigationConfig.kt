@@ -15,7 +15,7 @@ fun Navigation() {
     val coroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "home_page_screen") {
+    NavHost(navController = navController, startDestination = "login_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
@@ -48,6 +48,15 @@ fun Navigation() {
         }
         composable("logout_screen") {
             LogOutScreen(navController = navController)
+        }
+        composable("login_screen") {
+            LogInScreen(navController = navController, 0.75f)
+        }
+        composable("sign_up_screen") {
+            SignUpScreen(navController = navController, 0.75f)
+        }
+        composable("recover_screen") {
+            RecoverScreen(navController = navController, 0.75f)
         }
     }
 }

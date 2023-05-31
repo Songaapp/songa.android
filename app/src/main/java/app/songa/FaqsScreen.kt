@@ -1,5 +1,6 @@
 package app.songa
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -33,10 +34,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import app.songa.ui.theme.GreenPrimary
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Faqs(navController: NavController, alpha: Float = 0.5f) {
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-    val coroutineScope = rememberCoroutineScope()
     Scaffold(
         drawerContent = {},
         drawerGesturesEnabled = true,
