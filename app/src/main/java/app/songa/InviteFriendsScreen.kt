@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -124,6 +125,7 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                     modifier = Modifier
                         .width(72.dp)
                         .height(72.dp)
+                        .clickable {  }
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.instagramiconwhite),
@@ -147,6 +149,7 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                     modifier = Modifier
                         .width(72.dp)
                         .height(72.dp)
+                        .clickable {  }
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.facebookiconwhite),
@@ -170,6 +173,7 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                     modifier = Modifier
                         .width(72.dp)
                         .height(72.dp)
+                        .clickable {  }
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.twittericonwhite),
