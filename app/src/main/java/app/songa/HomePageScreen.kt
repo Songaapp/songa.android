@@ -43,6 +43,8 @@ fun HomePageScreen(navController: NavController, custompage: String) {
                 "support" -> OnlineSupportScreen(navController = navController)
                 "settings" -> SettingsScreen(navController = navController)
                 "wallet" -> MyWalletScreen(navController = navController)
+                "edit_profile" -> EditProfileScreen(navController = navController)
+                "change_password" -> ChangePasswordScreen(navController = navController)
             }
         }
     )

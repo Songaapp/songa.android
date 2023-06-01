@@ -206,7 +206,9 @@ fun DrawerItem(item: NavigationItems, selected: Boolean, onItemClick: (Navigatio
 @Composable
 fun ChangeButton(navController: NavController) {
     Button(
-        onClick = {},
+        onClick = {
+            navController.navigate("edit_profile_screen")
+        },
         shape = RoundedCornerShape(20.dp),
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = Color.Black,

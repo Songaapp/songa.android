@@ -56,6 +56,12 @@ fun Navigation() {
         composable("recover_screen") {
             RecoverScreen(navController = navController, 0.75f)
         }
+        composable("edit_profile_screen") {
+            HomePageScreen(navController = navController, "edit_profile")
+        }
+        composable("change_password_screen") {
+            HomePageScreen(navController = navController, "change_password")
+        }
 //        composable("menu_pages") {
 //            MenuPages(navController = navController)
 //        }
