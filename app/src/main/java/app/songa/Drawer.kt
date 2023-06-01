@@ -48,6 +48,7 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
     val items = listOf(
         NavigationItems.Home,
         NavigationItems.History,
+        NavigationItems.Invite,
         NavigationItems.Support,
         NavigationItems.Settings,
         NavigationItems.Wallet,
@@ -152,6 +153,7 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { items ->
             DrawerItem(item= items, selected = currentRoute == items.route, onItemClick = {
+//                navController.navigate(items.route) {
                 navController.navigate(items.route) {
                     navController.graph.startDestinationRoute?.let {route ->
                         popUpTo(route){

@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomePageScreen(navController: NavController, alfa: Float = 0.5f) {
+fun HomePageScreen(navController: NavController, custompage: String) {
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
     val coroutineScope = rememberCoroutineScope()
 
@@ -36,7 +36,14 @@ fun HomePageScreen(navController: NavController, alfa: Float = 0.5f) {
                  },
         drawerGesturesEnabled = true,
         content = {
-            mapUI()
+            when(custompage){
+                "index" -> mapUI()
+                "invite" -> InvitedFriendsScreen(navController = navController)
+                "history" -> RideHistoryScreen(navController = navController)
+                "support" -> OnlineSupportScreen(navController = navController)
+                "settings" -> SettingsScreen(navController = navController)
+                "wallet" -> MyWalletScreen(navController = navController)
+            }
         }
     )
 }
