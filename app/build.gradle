@@ -77,4 +77,8 @@ dependencies {
     // Country Picker
 //    implementation 'com.github.togisoft:jetpack_compose_country_code_picker:1.4.1.1'
 //    implementation 'com.github farhanroy:ComposeCountryCodePicker:Tag'
+
+    // below dependency for using the retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
 }
