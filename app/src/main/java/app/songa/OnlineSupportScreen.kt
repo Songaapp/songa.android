@@ -56,7 +56,7 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
         }
         Spacer(modifier = Modifier.height(20.dp))
         Text(
-            "Online support",
+            "Online Support",
             fontFamily = ibmplexsanshebrew,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,

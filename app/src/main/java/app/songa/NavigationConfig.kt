@@ -13,7 +13,7 @@ import androidx.navigation.compose.rememberNavController
 fun Navigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "online_support_screen") {
+    NavHost(navController = navController, startDestination = "home_page_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
