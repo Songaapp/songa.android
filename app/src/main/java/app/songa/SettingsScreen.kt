@@ -159,7 +159,9 @@ fun SettingsScreen(navController: NavController, alfa: Float = 0.5f) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(30.dp)
-                            .clickable { }
+                            .clickable {
+                                navController.navigate("edit_profile_screen")
+                            }
                     ){
                         Text(
                             "Edit Profile",
@@ -180,7 +182,9 @@ fun SettingsScreen(navController: NavController, alfa: Float = 0.5f) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(30.dp)
-                            .clickable { }
+                            .clickable {
+                                navController.navigate("change_password_screen")
+                            }
                     ){
                         Text(
                             "Change Password",
