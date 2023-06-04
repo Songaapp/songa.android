@@ -13,8 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
-import app.songa.ChangePasswordScreen
-import app.songa.EditProfileScreen
 import app.songa.presentation.components.TopBarMenu
 import app.songa.presentation.components.Drawer
 import app.songa.presentation.components.rememberMapViewWithLifecycle
