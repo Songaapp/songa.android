@@ -55,12 +55,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import app.songa.R
+import app.songa.data.models.login.LoginRequest
 import app.songa.data.models.login.UserRepositoryImpl
 import app.songa.domain.LoginUseCase
 import app.songa.domain.LoginUseCaseImpl
 import app.songa.presentation.components.ibmplexsanshebrew
 import app.songa.presentation.components.inter
 import app.songa.presentation.theme.GreenPrimary
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.basic
+import io.ktor.client.request.post
+import io.ktor.client.utils.EmptyContent.contentType
+import io.ktor.http.ContentType
 import kotlinx.coroutines.launch
 
 
@@ -81,12 +88,25 @@ fun LogInScreen(navController: NavController, alpha: Float = 0.5f){
 //        ).show()
 //    }
 
-    // Login action
     val loginUser: () -> Unit = {
         coroutineScope.launch {
             try {
-//                val user = loginUseCase.login(phone.text, password.text)
-//                showToast(context, "Login Successfull")
+                val client = HttpClient {
+                    install(Auth) {
+                        basic {
+                            username = phone.text
+                            password = password
+                        }
+                    }
+                }
+
+                // Make a POST request to the login endpoint
+//                val response = client.post<String> {
+//                    url("https://songa-api.onrender.com/api/users/auth/login-user")
+//                    contentType(ContentType.Application.Json)
+//                    body = LoginRequest(phone.text, password.text)
+//                }
+
                 // On success navigate to homescreen
                 navController.navigate("home_page_screen")
             } catch (e: Exception) {
