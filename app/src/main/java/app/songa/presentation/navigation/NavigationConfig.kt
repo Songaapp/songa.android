@@ -23,7 +23,7 @@ import kotlinx.coroutines.delay
 fun Navigation() {
     val navController = rememberNavController()
     val isLoading = remember { mutableStateOf(true) }
-    val isSplashScreenShown = remember { mutableStateOf(false) }
+    val isSplashScreenShown = remember { mutableStateOf(true) }
 
     LaunchedEffect(key1 = isLoading.value) {
         delay(2000)
@@ -31,7 +31,7 @@ fun Navigation() {
         isSplashScreenShown.value = true
     }
 
-    NavHost(navController = navController, startDestination = if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
+    NavHost(navController = navController, startDestination =  if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }

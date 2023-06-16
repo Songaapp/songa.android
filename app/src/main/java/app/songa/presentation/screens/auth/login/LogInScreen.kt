@@ -115,9 +115,9 @@ fun LogInScreen(navController: NavController, alpha: Float = 0.5f){
         }
     }
 
-    LaunchedEffect(key1 = Unit) {
-        loginUser.invoke()
-    }
+//    LaunchedEffect(key1 = Unit) {
+//        loginUser.invoke()
+//    }
 
     Scaffold(
             drawerGesturesEnabled = false
@@ -227,7 +227,8 @@ fun LogInScreen(navController: NavController, alpha: Float = 0.5f){
                 )
 
                 Button(
-                    onClick = loginUser,
+//                    onClick = loginUser,
+                    onClick = {},
                     colors = ButtonDefaults.outlinedButtonColors(
                         contentColor = Color.White,
                         backgroundColor = GreenPrimary
