@@ -18,6 +18,16 @@ class AuthenticationViewModel : ViewModel() {
             authenticationMode = newAuthenticationMode
         )
     }
+    private fun updateFirstName(firstname: String) {
+        uiState.value = uiState.value.copy(
+            firstname = firstname
+        )
+    }
+    private fun updateLastName(lastname: String) {
+        uiState.value = uiState.value.copy(
+            lastname = lastname
+        )
+    }
     private fun updatePhone(phone: String) {
         uiState.value = uiState.value.copy(
             phone = phone
@@ -57,6 +67,12 @@ class AuthenticationViewModel : ViewModel() {
         when (authenticationEvent) {
             is AuthenticationEvent.ToggleAuthenticationMode -> {
                 toggleAuthenticationMode()
+            }
+            is AuthenticationEvent.FirstNameChanged -> {
+                updateFirstName(authenticationEvent.firstname)
+            }
+            is AuthenticationEvent.LastNameChanged -> {
+                updateLastName(authenticationEvent.lastname)
             }
             is AuthenticationEvent.PhoneChanged -> {
                 updatePhone(authenticationEvent.phone)
