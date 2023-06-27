@@ -106,7 +106,7 @@ fun PasswordInput(
                 ) {
                     isPasswordHidden = !isPasswordHidden
                 },
-                imageVector = if (isPasswordHidden) {
+                imageVector = if (!isPasswordHidden) {
                     Icons.Default.Visibility
                 } else Icons.Default.VisibilityOff,
                 contentDescription = null,
