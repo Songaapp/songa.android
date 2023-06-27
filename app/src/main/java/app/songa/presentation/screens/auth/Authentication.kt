@@ -22,6 +22,7 @@ fun Authentication(navController: NavController){
             ,
             authenticationState =
             viewModel.uiState.collectAsState().value,
+            navController = navController,
             handleEvent = viewModel::handleEvent
         )
     }

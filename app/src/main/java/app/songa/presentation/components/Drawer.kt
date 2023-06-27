@@ -22,7 +22,9 @@ import androidx.compose.material.Icon
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,17 +35,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.datastore.core.DataStore
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import app.songa.presentation.navigation.NavigationItems
 import app.songa.R
+import app.songa.presentation.screens.auth.AuthenticationState
+import app.songa.presentation.screens.auth.users.StoreUserData
 import app.songa.presentation.theme.GreenPrimary
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: NavController) {
+fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: NavController, authenticationState: AuthenticationState, dataStore: StoreUserData) {
     val items = listOf(
         NavigationItems.Home,
         NavigationItems.History,
@@ -51,8 +57,9 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
         NavigationItems.Support,
         NavigationItems.Settings,
         NavigationItems.Wallet,
-        NavigationItems.Logout,
+//        NavigationItems.Logout,
     )
+    val scope = rememberCoroutineScope()
 
     Column(
         modifier = Modifier
@@ -92,16 +99,19 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
                 Spacer(modifier = Modifier
                     .height(10.dp)
                 )
-                Text("Boda Waweru",
+                Text(authenticationState.first_name+" "+authenticationState.last_name,
                     fontSize = 24.sp,
                     fontFamily = inter,
                     color = Color.White,
                 )
-                Text("Astrol Petrol station, Utawala, Embakasi",
-                    fontSize = 12.sp,
-                    fontFamily = inter,
-                    color = Color.White,
-                )
+                authenticationState.address?.let {
+                    Text(
+                        it,
+                        fontSize = 12.sp,
+                        fontFamily = inter,
+                        color = Color.White,
+                    )
+                }
                 Spacer(modifier = Modifier
                     .height(10.dp)
                 )
@@ -166,6 +176,36 @@ fun Drawer(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: N
                     scaffoldState.drawerState.close()
                 }
             })
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    //log user out
+                    scope.launch {
+                        dataStore.deleteAllPreferences()
+                    }
+                    navController.navigate("authentication")
+                }
+                .height(45.dp)
+                .padding(start = 40.dp)
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.logouticonred),
+                contentDescription = "Log Out",
+                modifier = Modifier
+                    .size(width = 25.dp, height = 23.dp,)
+            )
+            Spacer(modifier = Modifier.width(15.dp))
+            Text(
+                "Log Out",
+                fontSize = 15.sp,
+                color = Color.White,
+                fontFamily = inter,
+                fontWeight = FontWeight.Bold
+
+            )
         }
         Spacer(modifier = Modifier
             .weight(1f)

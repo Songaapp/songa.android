@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -43,6 +44,7 @@ fun PasswordInput(
 //    hanleEvent: (AuthenticationEvent) -> Unit
 ) {
     var isPasswordHidden by remember { mutableStateOf(true) }
+    val focusManager = LocalFocusManager.current
 
 
     Text(
@@ -64,6 +66,7 @@ fun PasswordInput(
         keyboardActions = KeyboardActions(
             onDone = {
                 onDoneClicked()
+                focusManager.clearFocus()
 //                hanleEvent(AuthenticationEvent.Authenticate)
             }
         ),

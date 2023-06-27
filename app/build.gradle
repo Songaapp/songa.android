@@ -105,4 +105,6 @@ dependencies {
 
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
 //    implementation "com.github.togisoft:jetpack_compose_country_code_picker:1.1.4"
+//    implementation "androidx.datastore:datastore-preferences-core:1.0.0"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 }

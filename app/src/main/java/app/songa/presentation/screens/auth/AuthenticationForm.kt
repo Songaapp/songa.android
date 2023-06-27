@@ -1,5 +1,7 @@
 package app.songa.presentation.screens.auth
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -11,12 +13,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 @Composable
 fun AuthenticationForm(
@@ -33,8 +44,10 @@ fun AuthenticationForm(
     onPhoneChanged: (phone: String) -> Unit,
     onPasswordChanged: (password: String) -> Unit,
     onAuthenticate: () -> Unit,
-    onToggleMode: () -> Unit
+    onToggleMode: () -> Unit,
+    authenticationState: AuthenticationState
 ) {
+        val response = remember { mutableStateOf("")}
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -117,6 +130,7 @@ fun AuthenticationForm(
                     authenticationMode = authenticationMode,
                     onAuthenticate = onAuthenticate,
                     modifier = Modifier.width(170.dp),
+                    authenticationState = authenticationState
                 )
 
                 Spacer(

@@ -32,7 +32,7 @@ fun Navigation() {
         isSplashScreenShown.value = true
     }
 
-    NavHost(navController = navController, startDestination =  "authentication" ){// if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
+    NavHost(navController = navController, startDestination =  "splash_screen" ){// if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
