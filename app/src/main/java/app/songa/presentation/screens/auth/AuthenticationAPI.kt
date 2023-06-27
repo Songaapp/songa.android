@@ -23,4 +23,10 @@ interface AuthenticationAPI {
     )
     @POST("login-user")
     fun login(@Body loginModel: LoginModel?): Call<AuthModelLogin?>?
+
+    @Headers(
+        "Accept: application/json"
+    )
+    @POST("create-user-account")
+    fun registerUser(@Body registerModel: RegisterModel?): Call<AuthModelLogin?>?
 }
