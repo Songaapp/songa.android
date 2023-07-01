@@ -12,6 +12,7 @@ import app.songa.domain.LoginUseCase
 import app.songa.presentation.screens.app.Faqs
 import app.songa.presentation.screens.app.HomePageScreen
 import app.songa.presentation.screens.app.RecoverScreen
+import app.songa.presentation.screens.auth.Authentication
 import app.songa.presentation.screens.auth.login.LogInScreen
 import app.songa.presentation.screens.auth.LogOutScreen
 import app.songa.presentation.screens.auth.SignUpScreen
@@ -23,7 +24,7 @@ import kotlinx.coroutines.delay
 fun Navigation() {
     val navController = rememberNavController()
     val isLoading = remember { mutableStateOf(true) }
-    val isSplashScreenShown = remember { mutableStateOf(false) }
+    val isSplashScreenShown = remember { mutableStateOf(true) }
 
     LaunchedEffect(key1 = isLoading.value) {
         delay(2000)
@@ -31,7 +32,7 @@ fun Navigation() {
         isSplashScreenShown.value = true
     }
 
-    NavHost(navController = navController, startDestination = if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
+    NavHost(navController = navController, startDestination =  "splash_screen" ){// if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
@@ -80,6 +81,9 @@ fun Navigation() {
         }
         composable("change_password_screen") {
             HomePageScreen(navController = navController, "change_password")
+        }
+        composable("authentication") {
+            Authentication(navController = navController)
         }
 //        composable("menu_pages") {
 //            MenuPages(navController = navController)

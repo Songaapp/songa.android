@@ -234,7 +234,7 @@ fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
                 value = password,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 onValueChange = {
-                    mobile = it
+                    password = it
                 },
                 placeholder = { Text("Enter Password", fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
                 shape = RoundedCornerShape(15.dp),

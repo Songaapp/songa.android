@@ -53,6 +53,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import app.songa.R
 import app.songa.data.models.login.LoginRequest
@@ -61,6 +62,9 @@ import app.songa.domain.LoginUseCase
 import app.songa.domain.LoginUseCaseImpl
 import app.songa.presentation.components.ibmplexsanshebrew
 import app.songa.presentation.components.inter
+import app.songa.presentation.screens.auth.AuthenticationEvent
+import app.songa.presentation.screens.auth.AuthenticationState
+import app.songa.presentation.screens.auth.AuthenticationViewModel
 import app.songa.presentation.theme.GreenPrimary
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.auth.Auth
@@ -70,14 +74,18 @@ import io.ktor.client.utils.EmptyContent.contentType
 import io.ktor.http.ContentType
 import kotlinx.coroutines.launch
 
-
+//val viewModel: AuthenticationViewModel = viewModel()
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LogInScreen(navController: NavController, alpha: Float = 0.5f){
+fun LogInScreen(
+    navController: NavController,
+    alpha: Float = 0.5f,
+){
     val coroutineScope = rememberCoroutineScope()
     var phone by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
     val context = LocalContext.current
+
 
 //    @Composable
 //    fun showToast(message: Context, s: String) {
@@ -115,9 +123,9 @@ fun LogInScreen(navController: NavController, alpha: Float = 0.5f){
         }
     }
 
-    LaunchedEffect(key1 = Unit) {
-        loginUser.invoke()
-    }
+//    LaunchedEffect(key1 = Unit) {
+//        loginUser.invoke()
+//    }
 
     Scaffold(
             drawerGesturesEnabled = false
@@ -227,7 +235,8 @@ fun LogInScreen(navController: NavController, alpha: Float = 0.5f){
                 )
 
                 Button(
-                    onClick = loginUser,
+//                    onClick = loginUser,
+                    onClick = {},
                     colors = ButtonDefaults.outlinedButtonColors(
                         contentColor = Color.White,
                         backgroundColor = GreenPrimary
