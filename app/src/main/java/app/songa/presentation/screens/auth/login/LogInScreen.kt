@@ -1,6 +1,6 @@
 package app.songa.presentation.screens.auth.login
 
-import app.songa.presentation.components.PasswordTextField
+import app.songa.presentation.components.inputs.auth.PasswordTextField
 import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -28,7 +28,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,28 +52,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import app.songa.R
-import app.songa.data.models.login.LoginRequest
-import app.songa.data.models.login.UserRepositoryImpl
-import app.songa.domain.LoginUseCase
-import app.songa.domain.LoginUseCaseImpl
-import app.songa.presentation.components.ibmplexsanshebrew
-import app.songa.presentation.components.inter
-import app.songa.presentation.screens.auth.AuthenticationEvent
-import app.songa.presentation.screens.auth.AuthenticationState
-import app.songa.presentation.screens.auth.AuthenticationViewModel
+import app.songa.presentation.theme.ibmplexsanshebrew
+import app.songa.presentation.theme.inter
 import app.songa.presentation.theme.GreenPrimary
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.auth.Auth
 import io.ktor.client.plugins.auth.providers.basic
-import io.ktor.client.request.post
-import io.ktor.client.utils.EmptyContent.contentType
-import io.ktor.http.ContentType
 import kotlinx.coroutines.launch
 
-//val viewModel: AuthenticationViewModel = viewModel()
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LogInScreen(
@@ -86,15 +73,6 @@ fun LogInScreen(
     var password by remember { mutableStateOf(TextFieldValue("")) }
     val context = LocalContext.current
 
-
-//    @Composable
-//    fun showToast(message: Context, s: String) {
-//        Toast.makeText(
-//            context.applicationContext,
-//            message,
-//            Toast.LENGTH_LONG
-//        ).show()
-//    }
 
     val loginUser: () -> Unit = {
         coroutineScope.launch {
@@ -122,10 +100,6 @@ fun LogInScreen(
             }
         }
     }
-
-//    LaunchedEffect(key1 = Unit) {
-//        loginUser.invoke()
-//    }
 
     Scaffold(
             drawerGesturesEnabled = false
@@ -204,7 +178,7 @@ fun LogInScreen(
                         onValueChange = {
                             phone = it
                         },
-                        placeholder = { Text("+254 XX XXX XXX", fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
+                        placeholder = { Text("07 XX XXX XXX", fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
                         shape = RoundedCornerShape(15.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             textColor = Color.Black,

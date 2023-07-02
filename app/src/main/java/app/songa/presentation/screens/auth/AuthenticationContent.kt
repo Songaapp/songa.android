@@ -1,7 +1,6 @@
 package app.songa.presentation.screens.auth
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -34,7 +33,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import app.songa.R
-import app.songa.presentation.screens.auth.users.StoreUserData
+import app.songa.data.users.StoreUserData
+import app.songa.presentation.components.forms.AuthenticationForm
 import app.songa.presentation.theme.GreenPrimary
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -124,12 +124,6 @@ fun AuthenticationContent(
                     )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
-//            if (authenticationState.isLoading) {
-////            Spacer(modifier = Modifier.height(70.dp))
-//                CircularProgressIndicator()
-//                println(authenticationState.phone);
-//                println(authenticationState.password);
-//            } else {
                 AuthenticationForm(
                     modifier = Modifier.fillMaxSize(),
                     authenticationMode = authenticationState.authenticationMode,

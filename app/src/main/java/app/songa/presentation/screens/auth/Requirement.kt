@@ -25,7 +25,6 @@ import app.songa.presentation.theme.GreenPrimary
 
 @Composable
 fun Requirement(
-    modifier: Modifier = Modifier,
     message: String,
     satisfied: Boolean
 ) {

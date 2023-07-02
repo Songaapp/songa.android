@@ -2,16 +2,14 @@ package app.songa.presentation.screens.auth
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import app.songa.R
-import app.songa.presentation.components.inter
+import app.songa.presentation.theme.inter
 
 @Composable
 fun AuthenticationTitle(
-    modifier: Modifier = Modifier,
     authenticationMode: AuthenticationMode
 ){
     Text(

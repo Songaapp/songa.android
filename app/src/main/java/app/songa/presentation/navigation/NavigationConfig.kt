@@ -7,14 +7,11 @@ import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import app.songa.HomeScreen
-import app.songa.domain.LoginUseCase
-import app.songa.presentation.screens.app.Faqs
-import app.songa.presentation.screens.app.HomePageScreen
-import app.songa.presentation.screens.app.RecoverScreen
+import app.songa.presentation.screens.app.user.home.HomeScreen
+import app.songa.presentation.screens.app.misc.support.Faqs
+import app.songa.presentation.screens.app.user.home.HomePageScreen
 import app.songa.presentation.screens.auth.Authentication
 import app.songa.presentation.screens.auth.login.LogInScreen
-import app.songa.presentation.screens.auth.LogOutScreen
 import app.songa.presentation.screens.auth.SignUpScreen
 import app.songa.presentation.screens.onboarding.SplashScreen
 import app.songa.presentation.screens.onboarding.WebOpen
@@ -32,7 +29,7 @@ fun Navigation() {
         isSplashScreenShown.value = true
     }
 
-    NavHost(navController = navController, startDestination =  "splash_screen" ){// if (isSplashScreenShown.value) "splash_screen" else "login_screen") {
+    NavHost(navController = navController, startDestination =  "splash_screen" ){
         composable("splash_screen") {
             SplashScreen(navController = navController, 0.9f)
         }
@@ -43,7 +40,7 @@ fun Navigation() {
             Faqs(navController = navController, 0.75f)
         }
         composable("website_screen") {
-            WebOpen(navController = navController, mUrl = "https://songa.app")
+            WebOpen(mUrl = "https://songa.app")
         }
         composable("home_page_screen") {
             HomePageScreen(navController = navController, "index")
@@ -63,18 +60,12 @@ fun Navigation() {
         composable("my_wallet_screen") {
             HomePageScreen(navController = navController, "wallet")
         }
-        composable("logout_screen") {
-            LogOutScreen(navController = navController)
-        }
         composable("login_screen") {
             LogInScreen(navController = navController, alpha = 0.75f)
         }
 
         composable("sign_up_screen") {
             SignUpScreen(navController = navController, 0.75f)
-        }
-        composable("recover_screen") {
-            RecoverScreen(navController = navController, 0.75f)
         }
         composable("edit_profile_screen") {
             HomePageScreen(navController = navController, "edit_profile")
@@ -85,9 +76,6 @@ fun Navigation() {
         composable("authentication") {
             Authentication(navController = navController)
         }
-//        composable("menu_pages") {
-//            MenuPages(navController = navController)
-//        }
     }
 }
 
