@@ -31,13 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import app.songa.R
-import app.songa.presentation.theme.ibmplexsanshebrew
 import app.songa.presentation.theme.GreenPrimary
+import app.songa.presentation.theme.ibmplexsanshebrew
 
 @Composable
-fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
+fun OnlineSupportScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -95,13 +94,13 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
                 Column {
                     Row(
                         modifier = Modifier
-                        .fillMaxWidth()
-                            .clickable {  },
+                            .fillMaxWidth()
+                            .clickable { },
                         horizontalArrangement = Arrangement.SpaceBetween,
 
                     ) {
-                        Column() {
-                            Row() {
+                        Column {
+                            Row {
                                 Image(
                                     painter = painterResource(id = R.drawable.messengericonwhite),
                                     contentDescription = "Messenger",
@@ -129,7 +128,7 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
                                 textAlign = TextAlign.End,
                             )
                         }
-                        Column() {
+                        Column {
                             Icon(
                                 imageVector = Icons.Default.KeyboardArrowRight,
                                 contentDescription = "Right Arrow",
@@ -176,7 +175,7 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "Payments and Pricing",
@@ -198,7 +197,7 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "About Songa",
@@ -220,7 +219,7 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "App and Features",
@@ -242,7 +241,7 @@ fun OnlineSupportScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "Account and Data",

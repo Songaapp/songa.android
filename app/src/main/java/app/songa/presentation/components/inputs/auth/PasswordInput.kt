@@ -32,8 +32,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.songa.R
-import app.songa.presentation.theme.ibmplexsanshebrew
 import app.songa.presentation.theme.GreenPrimary
+import app.songa.presentation.theme.ibmplexsanshebrew
 
 @Composable
 fun PasswordInput(
@@ -58,7 +58,7 @@ fun PasswordInput(
     Spacer(modifier = Modifier.height(10.dp))
 
     OutlinedTextField(
-        value = password ?:"",
+        value = password,
         visualTransformation = if (isPasswordHidden) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done,

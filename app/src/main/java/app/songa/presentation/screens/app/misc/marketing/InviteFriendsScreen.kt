@@ -46,11 +46,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import app.songa.R
-import app.songa.presentation.theme.ibmplexsanshebrew
 import app.songa.presentation.theme.GreenPrimary
+import app.songa.presentation.theme.ibmplexsanshebrew
 
 @Composable
-fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
+fun InvitedFriendsScreen(navController: NavController) {
     var search by remember { mutableStateOf(TextFieldValue("")) }
     Column(
         modifier = Modifier
@@ -119,7 +119,7 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                     modifier = Modifier
                         .width(72.dp)
                         .height(72.dp)
-                        .clickable {  }
+                        .clickable { }
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.instagramiconwhite),
@@ -143,7 +143,7 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                     modifier = Modifier
                         .width(72.dp)
                         .height(72.dp)
-                        .clickable {  }
+                        .clickable { }
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.facebookiconwhite),
@@ -167,7 +167,7 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                     modifier = Modifier
                         .width(72.dp)
                         .height(72.dp)
-                        .clickable {  }
+                        .clickable { }
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.twittericonwhite),
@@ -241,7 +241,8 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                         .verticalScroll(rememberScrollState())) {
                         Row(
                             horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier
+                                .fillMaxWidth()
                                 .padding(horizontal = 40.dp)
 
 
@@ -275,7 +276,9 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                                     backgroundColor = Color(0xFFFF0000)
                                 ),
                                 shape = RoundedCornerShape(10.dp),
-                                modifier = Modifier.width(66.dp).height(28.dp)
+                                modifier = Modifier
+                                    .width(66.dp)
+                                    .height(28.dp)
                             ) {
                                 Text(
                                     "Invite",
@@ -288,7 +291,8 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                         Spacer(modifier = Modifier.height(10.dp))
                         Row(
                             horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier
+                                .fillMaxWidth()
                                 .padding(horizontal = 40.dp)
 
 
@@ -322,7 +326,9 @@ fun InvitedFriendsScreen(navController: NavController, alfa: Float = 0.5f) {
                                     backgroundColor = Color(0xFFFF0000)
                                 ),
                                 shape = RoundedCornerShape(10.dp),
-                                modifier = Modifier.width(66.dp).height(28.dp)
+                                modifier = Modifier
+                                    .width(66.dp)
+                                    .height(28.dp)
                             ) {
                                 Text(
                                     "Invite",

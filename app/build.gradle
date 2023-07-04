@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id("com.google.dagger.hilt.android") version "2.44" apply false
+//    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -11,8 +11,8 @@ android {
         applicationId "app.songa"
         minSdk 21
         targetSdk 33
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 5
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -22,7 +22,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -108,4 +108,25 @@ dependencies {
 //    implementation "com.github.togisoft:jetpack_compose_country_code_picker:1.1.4"
 //    implementation "androidx.datastore:datastore-preferences-core:1.0.0"
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+
+// Permissions
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    implementation 'androidx.activity:activity-compose:1.4.0-alpha01'
+    implementation 'com.google.accompanist:accompanist-permissions:0.20.0'
+
+
+    // Google maps
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    // Google maps for compose
+    implementation 'com.google.maps.android:maps-compose:2.8.0'
+
+
+    // KTX for the Maps SDK for Android Utility Library
+    implementation 'com.google.maps.android:maps-utils-ktx:3.2.1'
+
+    // Hilt
+//    implementation "com.google.dagger:hilt-android:2.44"
+//    kapt "com.google.dagger:hilt-compiler:2.44"
+
 }

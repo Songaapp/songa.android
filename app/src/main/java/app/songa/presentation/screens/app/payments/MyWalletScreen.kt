@@ -31,13 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import app.songa.R
-import app.songa.presentation.theme.ibmplexsanshebrew
 import app.songa.presentation.theme.GreenPrimary
+import app.songa.presentation.theme.ibmplexsanshebrew
 
 @Composable
-fun MyWalletScreen(navController: NavController, alfa: Float = 0.5f) {
+fun MyWalletScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -158,7 +157,7 @@ fun MyWalletScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "About Songa Points",
@@ -180,7 +179,7 @@ fun MyWalletScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "Buy Songa Points",
@@ -202,7 +201,7 @@ fun MyWalletScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "Transfer Songa Points",
@@ -224,7 +223,7 @@ fun MyWalletScreen(navController: NavController, alfa: Float = 0.5f) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(30.dp)
-                                .clickable {  }
+                                .clickable { }
                         ){
                             Text(
                                 "Earn Songa Points",
