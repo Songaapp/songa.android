@@ -50,14 +50,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import app.songa.R
-import app.songa.presentation.components.ibmplexsanshebrew
-import app.songa.presentation.components.inter
+import app.songa.presentation.theme.ibmplexsanshebrew
+import app.songa.presentation.theme.inter
 import app.songa.presentation.theme.GreenPrimary
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
-    var firstname by remember { mutableStateOf(TextFieldValue("")) }
+    val firstname by remember { mutableStateOf(TextFieldValue("")) }
     var lastname by remember { mutableStateOf(TextFieldValue("")) }
     var mobile by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -120,7 +120,7 @@ fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
                 fontSize = 20.sp,
             )
             Spacer(modifier = Modifier.height(30.dp))
-            Row() {
+            Row {
                 Text(
                     "First Name",
                     fontFamily = ibmplexsanshebrew,
@@ -138,7 +138,7 @@ fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
-            Row() {
+            Row {
                 OutlinedTextField(
                     value = firstname,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
@@ -234,7 +234,7 @@ fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
                 value = password,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 onValueChange = {
-                    mobile = it
+                    password = it
                 },
                 placeholder = { Text("Enter Password", fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
                 shape = RoundedCornerShape(15.dp),
@@ -280,7 +280,7 @@ fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
                     .fillMaxWidth()
                     .height(20.dp)
             )
-            Row() {
+            Row {
                 Text(
                     "Already have an account? ",
                     fontSize = 13.sp,
@@ -302,7 +302,7 @@ fun SignUpScreen(navController: NavController, alpha: Float = 0.5f) {
 
                         ),
                     onClick = {
-                        navController.navigate("login_screen");
+                        navController.navigate("login_screen")
                     },
                 )
 

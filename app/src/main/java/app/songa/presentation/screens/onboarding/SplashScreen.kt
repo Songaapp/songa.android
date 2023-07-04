@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,24 +18,39 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import app.songa.R
+import app.songa.data.users.StoreUserData
+import app.songa.presentation.screens.auth.AuthenticationState
 import kotlinx.coroutines.delay
 
 
 @Composable
 fun SplashScreen(navController: NavController, alpha: Float = 0.5f) {
+//context
+    val context = LocalContext.current
+    // we instantiate the saveEmail class
+    val dataStore = StoreUserData(context)
+    val isSignedIn = dataStore.getLogin.collectAsState(initial = "")
+
     val scale = remember{
         Animatable(initialValue = 0f)
     }
+    AuthenticationState()
     LaunchedEffect(key1 = true, block = {
         scale.animateTo(targetValue = 0.8f, animationSpec = tween(durationMillis = 700,
             easing = { OvershootInterpolator(2f).getInterpolation(it)})
         )
         delay(3000L)
         // Check if user is logged in or first time user here
-        navController.navigate("home_screen")
+        if(isSignedIn.value!! == "true") {
+            navController.navigate("home_page_screen")
+        }
+        else {
+            navController.navigate("authentication")
+        }
     } )
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
         Image(painter = painterResource(id = R.drawable.safeboda), contentDescription = "Safe Boda", contentScale = ContentScale.Crop, modifier = Modifier

@@ -9,5 +9,4 @@ sealed class NavigationItems(var route: String, var icon: Int, var title: String
     object  Support: NavigationItems("online_support_screen", R.drawable.supporticonred, "Online Support")
     object  Settings: NavigationItems("settings_screen", R.drawable.settingsiconred, "Settings")
     object  Wallet: NavigationItems("my_wallet_screen", R.drawable.walleticonred, "My Wallet")
-    object  Logout: NavigationItems("logout_screen", R.drawable.logouticonred, "Log Out")
 }

@@ -5,14 +5,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.navigation.NavController
 
 // Creating a composable
 // function to create WebView
 // Calling this function as
 // content in the above function
 @Composable
-fun WebOpen(navController: NavController, mUrl: String){
+fun WebOpen(mUrl: String){
 
     // Adding a WebView inside AndroidView
     // with layout as full screen
