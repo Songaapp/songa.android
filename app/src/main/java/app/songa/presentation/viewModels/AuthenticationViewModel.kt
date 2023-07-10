@@ -116,7 +116,7 @@ class AuthenticationViewModel : ViewModel() {
 
     private  fun authLoginRequest() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://songa-api.onrender.com/api/users/auth/")
+            .baseUrl("https://api.songa.app/api/users/auth/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -149,8 +149,8 @@ class AuthenticationViewModel : ViewModel() {
                     Log.d("Main", "--------> success Auth! " + model.toString())
                     Log.d("Main", "--------> success Auth Message! " + model.toString())
 
-                    val msg = model!!.message
-                    val user = model!!.user
+                    val msg = if (model != null) model.message else throw NullPointerException("Expression 'model' must not be null")
+                    val user = model.user
 
                     if(uiState.value.isLoading) {
                         uiState.value = uiState.value.copy(
@@ -160,14 +160,14 @@ class AuthenticationViewModel : ViewModel() {
                     if(msg == "login successfull, using old token") {
                         uiState.value = uiState.value.copy(
                             isSignedIn = true,
-                            first_name = user!!.first_name,
-                            last_name = user!!.last_name,
-                            phone = user!!.phone,
-                            email = user.email,
-                            avatar = user!!.avatar,
-                            id = user!!.id,
-                            address = user!!.address,
-                            sessionToken = user!!.sessionToken
+                            first_name = user?.first_name,
+                            last_name = user?.last_name,
+                            phone = user?.phone,
+                            email = user?.email,
+                            avatar = user?.avatar,
+                            id = user?.id,
+                            address = user?.address,
+                            sessionToken = user?.sessionToken
                         )
                         Log.d("Main", "--------> success Auth Session! " + uiState.value.sessionToken)
                     }
@@ -194,7 +194,7 @@ class AuthenticationViewModel : ViewModel() {
 
     private  fun authRegisterRequest() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://songa-api.onrender.com/api/users/auth/")
+            .baseUrl("https://api.songa.app/api/users/auth/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -229,8 +229,8 @@ class AuthenticationViewModel : ViewModel() {
                     Log.d("Main", "--------> success Auth! " + model.toString())
                     Log.d("Main", "--------> success Auth Message! " + model.toString())
 
-                    val msg = model!!.message
-                    val user = model!!.user
+                    val msg = model?.message
+                    val user = model?.user
 
                     if(uiState.value.isLoading) {
                         uiState.value = uiState.value.copy(
@@ -240,14 +240,14 @@ class AuthenticationViewModel : ViewModel() {
                     if(msg == "login successfull, using old token") {
                         uiState.value = uiState.value.copy(
                             isSignedIn = true,
-                            first_name = user!!.first_name,
-                            last_name = user!!.last_name,
-                            phone = user!!.phone,
-                            email = user!!.email,
-                            avatar = user!!.avatar,
-                            id = user!!.id,
-                            address = user!!.address,
-                            sessionToken = user!!.sessionToken
+                            first_name = user?.first_name,
+                            last_name = user?.last_name,
+                            phone = user?.phone,
+                            email = user?.email,
+                            avatar = user?.avatar,
+                            id = user?.id,
+                            address = user?.address,
+                            sessionToken = user?.sessionToken
                         )
                         Log.d("Main", "--------> success Auth Session! " + uiState.value.sessionToken)
                     }
