@@ -17,6 +17,9 @@
     <string name="label_sign_up_for_account">
         SIGN UP
     </string>
+    <string name="label_edit_account">
+        ACCOUNT
+    </string>
     <string name="label_firstname">
         First Name
     </string>
@@ -28,6 +31,12 @@
     </string>
     <string name="label_password">
         Enter Password
+    </string>
+    <string name="label_old_password">
+        Enter Old Password
+    </string>
+    <string name="label_new_password">
+        Enter New Password
     </string>
     <string name="cd_show_password">
         Show Password

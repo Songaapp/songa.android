@@ -19,9 +19,13 @@ import androidx.navigation.NavController
 import app.songa.presentation.components.TopBarMenu
 import app.songa.presentation.components.Drawer
 import app.songa.presentation.components.rememberMapViewWithLifecycle
+import app.songa.presentation.screens.auth.AuthenticationEvent
+import app.songa.presentation.screens.auth.AuthenticationMode
 import app.songa.presentation.screens.auth.AuthenticationState
+import app.songa.presentation.screens.auth.AuthenticationViewModel
 import app.songa.presentation.screens.auth.ProfileModel
 import app.songa.presentation.screens.auth.users.StoreUserData
+import app.songa.presentation.theme.GreenPrimary
 import com.google.maps.android.ktx.awaitMap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,10 +33,11 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun HomePageScreen(navController: NavController, custompage: String) {
+fun HomePageScreen(navController: NavController, custompage: String, viewModel: AuthenticationViewModel) {
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
     val coroutineScope = rememberCoroutineScope()
-    val authenticationState = AuthenticationState()
+    val authenticationState =
+        viewModel.uiState.collectAsState().value
     //context
     val context = LocalContext.current
     // we instantiate the saveEmail class
@@ -45,6 +50,9 @@ fun HomePageScreen(navController: NavController, custompage: String) {
     val email = dataStore.getEmail.collectAsState(initial = "")
     val avatar = dataStore.getAvatar.collectAsState(initial = "")
     val address = dataStore.getAddress.collectAsState(initial = "")
+    val gender = dataStore.getGender.collectAsState(initial = "")
+    val dateCreated = dataStore.getDateCreated.collectAsState(initial = "")
+    val updatedAt = dataStore.getUpdatedAt.collectAsState(initial = "")
     val userid = dataStore.getUserId.collectAsState(initial = "")
     val sessionToken = dataStore.getSessionToken.collectAsState(initial = "")
 
@@ -55,6 +63,9 @@ fun HomePageScreen(navController: NavController, custompage: String) {
     authenticationState.email = email.value!!
     authenticationState.avatar = avatar.value!!
     authenticationState.address = address.value!!
+    authenticationState.gender = gender.value!!
+    authenticationState.dateCreated = dateCreated.value!!
+    authenticationState.updatedAt = updatedAt.value!!
     authenticationState.id = userid.value!!
     authenticationState.sessionToken = sessionToken.value!!
 
@@ -64,10 +75,11 @@ fun HomePageScreen(navController: NavController, custompage: String) {
             Drawer(scope = coroutineScope, scaffoldState = scaffoldState, navController = navController, authenticationState, dataStore)
         },
         topBar = {
-            TopBarMenu(scope = coroutineScope, scaffoldState = scaffoldState, navController= navController)
+            TopBarMenu(scope = coroutineScope, scaffoldState = scaffoldState)
                  },
         drawerGesturesEnabled = true,
         content = {
+            val handleEvent = viewModel::handleEvent
             when(custompage){
                 "index" -> mapUI()
                 "invite" -> InvitedFriendsScreen(navController = navController)
@@ -76,7 +88,18 @@ fun HomePageScreen(navController: NavController, custompage: String) {
                 "settings" -> SettingsScreen(navController = navController)
                 "wallet" -> MyWalletScreen(navController = navController)
                 "edit_profile" -> EditProfileScreen(navController = navController)
-                "change_password" -> ChangePasswordScreen(navController = navController)
+                "change_password" -> {
+                    val newAuthenticationMode = AuthenticationMode.CHANGE_PASSWORD
+                    handleEvent(
+                        AuthenticationEvent.ChangePasswordAuthenticationMode
+                    )
+                    Log.d("Main", "-------> Changed Mode: "+ authenticationState.authenticationMode)
+                    ChangePasswordScreen(
+                        navController = navController,
+                        authenticationState = authenticationState,
+                        handleEvent = handleEvent,
+                    )
+                }
             }
         }
     )

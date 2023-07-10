@@ -1,5 +1,6 @@
 package app.songa.presentation.screens.auth
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
@@ -13,8 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
-fun Authentication(navController: NavController){
-    val viewModel: AuthenticationViewModel = viewModel()
+fun Authentication(navController: NavController, viewModel: AuthenticationViewModel){
     MaterialTheme {
         AuthenticationContent(
             modifier = Modifier
@@ -23,7 +23,7 @@ fun Authentication(navController: NavController){
             authenticationState =
             viewModel.uiState.collectAsState().value,
             navController = navController,
-            handleEvent = viewModel::handleEvent
+            handleEvent = viewModel::handleEvent,
         )
     }
 }

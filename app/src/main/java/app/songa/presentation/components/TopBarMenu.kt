@@ -35,7 +35,7 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun TopBarMenu(scope: CoroutineScope, scaffoldState: ScaffoldState, navController: NavController) {
+fun TopBarMenu(scope: CoroutineScope, scaffoldState: ScaffoldState) {
 
     TopAppBar(
         title = {},

@@ -26,6 +26,22 @@ class AuthenticationViewModel : ViewModel() {
             authenticationMode = newAuthenticationMode
         )
     }
+
+    private fun passwordChangeAuthenticationMode() {
+        val authenticationMode = uiState.value.authenticationMode
+        val newAuthenticationMode = AuthenticationMode.CHANGE_PASSWORD
+        uiState.value = uiState.value.copy(
+            authenticationMode = newAuthenticationMode
+        )
+    }
+
+    private fun accountSettingsAuthenticationMode() {
+        val authenticationMode = uiState.value.authenticationMode
+        val newAuthenticationMode = AuthenticationMode.ACCOUNT_SETTINGS
+        uiState.value = uiState.value.copy(
+            authenticationMode = newAuthenticationMode
+        )
+    }
     private fun updateFirstName(firstname: String) {
         uiState.value = uiState.value.copy(
             first_name = firstname
@@ -39,6 +55,11 @@ class AuthenticationViewModel : ViewModel() {
     private fun updatePhone(phone: String) {
         uiState.value = uiState.value.copy(
             phone = phone
+        )
+    }
+    private fun updateOldPpassword(oldpassword: String) {
+        uiState.value = uiState.value.copy(
+            oldpassword = oldpassword
         )
     }
     private fun updatePassword(password: String) {
@@ -87,6 +108,12 @@ class AuthenticationViewModel : ViewModel() {
             is AuthenticationEvent.ToggleAuthenticationMode -> {
                 toggleAuthenticationMode()
             }
+            is AuthenticationEvent.ChangePasswordAuthenticationMode -> {
+                passwordChangeAuthenticationMode()
+            }
+            is AuthenticationEvent.AccountSettingsAuthenticationMode -> {
+                accountSettingsAuthenticationMode()
+            }
             is AuthenticationEvent.FirstNameChanged -> {
                 updateFirstName(authenticationEvent.firstname)
             }
@@ -98,6 +125,9 @@ class AuthenticationViewModel : ViewModel() {
             }
             is AuthenticationEvent.PasswordChanged -> {
                 updatePassword(authenticationEvent.password)
+            }
+            is AuthenticationEvent.OldPasswordChanged -> {
+                updatePassword(authenticationEvent.oldPassword)
             }
             is AuthenticationEvent.Authenticate -> {
                 authenticate()

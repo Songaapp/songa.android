@@ -26,7 +26,7 @@ fun MenuPages(navController: NavController){
 //            Drawer(scope = coroutineScope, scaffoldState = scaffoldState, navController = navController)
         },
         topBar = {
-            TopBarMenu(scope = coroutineScope, scaffoldState = scaffoldState, navController= navController)
+            TopBarMenu(scope = coroutineScope, scaffoldState = scaffoldState)
         },
         drawerGesturesEnabled = true,
         content = {

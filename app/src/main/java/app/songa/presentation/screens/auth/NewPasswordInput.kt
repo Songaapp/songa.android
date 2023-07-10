@@ -38,7 +38,7 @@ import app.songa.presentation.components.ibmplexsanshebrew
 import app.songa.presentation.theme.GreenPrimary
 
 @Composable
-fun PasswordInput(
+fun NewPasswordInput(
     modifier: Modifier = Modifier,
     password: String,
     onPasswordChanged: (phone: String) -> Unit,
@@ -50,7 +50,7 @@ fun PasswordInput(
 
     Text(
         text = stringResource(
-            id = R.string.label_password),
+            id = R.string.label_new_password),
         fontFamily = ibmplexsanshebrew,
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
@@ -75,7 +75,7 @@ fun PasswordInput(
             onPasswordChanged(it)
         },
         placeholder = { Text(stringResource(
-            id = R.string.label_password), fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
+            id = R.string.label_new_password), fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
         shape = RoundedCornerShape(15.dp),
         colors = TextFieldDefaults.textFieldColors(
             textColor = Color.Black,

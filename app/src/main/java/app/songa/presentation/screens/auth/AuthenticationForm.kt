@@ -42,6 +42,7 @@ fun AuthenticationForm(
     onFirstNameChanged:(firstname: String) -> Unit,
     onLastNameChanged: (lastname: String) -> Unit,
     onPhoneChanged: (phone: String) -> Unit,
+    onOldPasswordChanged: (oldPassword: String) -> Unit,
     onPasswordChanged: (password: String) -> Unit,
     onAuthenticate: () -> Unit,
     onToggleMode: () -> Unit,
@@ -119,7 +120,8 @@ fun AuthenticationForm(
 
                 AnimatedVisibility(
                     visible = authenticationMode ==
-                            AuthenticationMode.SIGN_UP
+                            AuthenticationMode.SIGN_UP || authenticationMode ==
+                            AuthenticationMode.CHANGE_PASSWORD
                 ) {
                     PasswordRequirement(satisfiedRequirements = completedPasswordRequirements)
                 }

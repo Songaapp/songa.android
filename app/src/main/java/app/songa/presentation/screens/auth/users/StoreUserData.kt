@@ -22,6 +22,9 @@ class StoreUserData(private val context: Context) {
         val USER_EMAIL_KEY = stringPreferencesKey("user_email")
         val USER_AVATAR_KEY = stringPreferencesKey("user_avatar")
         val USER_ADDRESS_KEY = stringPreferencesKey("user_address")
+        val USER_GENDER_KEY = stringPreferencesKey("user_gender")
+        val USER_DATE_CREATED_KEY = stringPreferencesKey("user_date_create")
+        val USER_UPDATED_AT_KEY = stringPreferencesKey("user_updated_at")
         val USER_ID_KEY = stringPreferencesKey("user_id")
         val USER_SESSION_TOKEN_KEY = stringPreferencesKey("user_session_token")
     }
@@ -59,6 +62,21 @@ class StoreUserData(private val context: Context) {
     val getAddress: Flow<String?> = context.dataStoree.data
         .map { preferences ->
             preferences[USER_ADDRESS_KEY] ?: ""
+        }
+
+    val getGender: Flow<String?> = context.dataStoree.data
+        .map { preferences ->
+            preferences[USER_GENDER_KEY] ?: ""
+        }
+
+    val getDateCreated: Flow<String?> = context.dataStoree.data
+        .map { preferences ->
+            preferences[USER_DATE_CREATED_KEY] ?: ""
+        }
+
+    val getUpdatedAt: Flow<String?> = context.dataStoree.data
+        .map { preferences ->
+            preferences[USER_UPDATED_AT_KEY] ?: ""
         }
 
     val getUserId: Flow<String?> = context.dataStoree.data
@@ -110,6 +128,24 @@ class StoreUserData(private val context: Context) {
     suspend fun saveAddress(name: String) {
         context.dataStoree.edit { preferences ->
             preferences[USER_ADDRESS_KEY] = name
+        }
+    }
+
+    suspend fun saveGender(name: String) {
+        context.dataStoree.edit { preferences ->
+            preferences[USER_GENDER_KEY] = name
+        }
+    }
+
+    suspend fun saveDateCreated(name: String) {
+        context.dataStoree.edit { preferences ->
+            preferences[USER_DATE_CREATED_KEY] = name
+        }
+    }
+
+    suspend fun saveUpdatedAt(name: String) {
+        context.dataStoree.edit { preferences ->
+            preferences[USER_UPDATED_AT_KEY] = name
         }
     }
 

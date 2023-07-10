@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
@@ -34,6 +35,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import app.songa.R
+import app.songa.presentation.screens.app.ChangePasswordScreen
+import app.songa.presentation.screens.app.EditProfileScreen
 import app.songa.presentation.screens.auth.users.StoreUserData
 import app.songa.presentation.theme.GreenPrimary
 import kotlinx.coroutines.delay
@@ -46,9 +49,19 @@ fun AuthenticationContent(
     authenticationState: AuthenticationState,
     handleEvent: (event: AuthenticationEvent) -> Unit,
     navController: NavController,
-    alpha: Float = 0.5f
+    alpha: Float = 0.5f,
 ) {
-    if(authenticationState.isSignedIn) {
+    if(authenticationState.isSignedIn && authenticationState.authenticationMode == AuthenticationMode.CHANGE_PASSWORD) {
+
+        Text(text = "Password", color = Color.Red)
+    }
+    if(authenticationState.isSignedIn && authenticationState.authenticationMode == AuthenticationMode.CHANGE_PASSWORD) {
+        authenticationState.authenticationMode.apply {
+            AuthenticationMode.ACCOUNT_SETTINGS
+        }
+        Text(text = "Account Settings", color = Color.Red)
+    }
+    if(authenticationState.isSignedIn && authenticationState.authenticationMode != AuthenticationMode.CHANGE_PASSWORD) {
         val context = LocalContext.current
         val scope = rememberCoroutineScope()
         val userDataStore = StoreUserData(context)
@@ -62,6 +75,9 @@ fun AuthenticationContent(
                     authenticationState.phone?.let { userDataStore.savePhone(name = it) }
                     authenticationState.email?.let { userDataStore.saveEmail(name = it) }
                     authenticationState.avatar?.let { userDataStore.saveAvatar(name = it) }
+                    authenticationState.address?.let { userDataStore.saveAddress(name = it) }
+                    authenticationState.gender?.let { userDataStore.saveAddress(name = it) }
+                    authenticationState.address?.let { userDataStore.saveAddress(name = it) }
                     authenticationState.address?.let { userDataStore.saveAddress(name = it) }
                     authenticationState.id?.let { userDataStore.saveUserId(name = it) }
                     authenticationState.sessionToken?.let { userDataStore.saveSessionToken(name = it) }
@@ -97,31 +113,34 @@ fun AuthenticationContent(
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .width(100.dp)
-                        .height(100.dp)
-                        .clip(shape = CircleShape)
-                        .background(Color(0xFFD9D9D9), shape = CircleShape)
-                        .border(
-                            BorderStroke(
-                                1.dp,
-                                SolidColor(
-                                    Color(0xFFD9D9D9),
-                                )
-                            ),
-                            shape = CircleShape
-                        ),
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.usergreen),
-                        contentDescription = "User Placeholder",
-                        contentScale = ContentScale.Crop,
+                if(authenticationState.authenticationMode == AuthenticationMode.CHANGE_PASSWORD || authenticationState.authenticationMode == AuthenticationMode.ACCOUNT_SETTINGS) {}
+                else {
+                    Box(
+                        contentAlignment = Alignment.Center,
                         modifier = Modifier
-                            .width(72.75.dp)
-                            .height(67.5.dp)
-                    )
+                            .width(100.dp)
+                            .height(100.dp)
+                            .clip(shape = CircleShape)
+                            .background(Color(0xFFD9D9D9), shape = CircleShape)
+                            .border(
+                                BorderStroke(
+                                    1.dp,
+                                    SolidColor(
+                                        Color(0xFFD9D9D9),
+                                    )
+                                ),
+                                shape = CircleShape
+                            ),
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.usergreen),
+                            contentDescription = "User Placeholder",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .width(72.75.dp)
+                                .height(67.5.dp)
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 //            if (authenticationState.isLoading) {
@@ -147,6 +166,9 @@ fun AuthenticationContent(
                     },
                     onPhoneChanged = {
                         handleEvent(AuthenticationEvent.PhoneChanged(it))
+                    },
+                    onOldPasswordChanged =  {
+                        handleEvent(AuthenticationEvent.OldPasswordChanged(it))
                     },
                     onPasswordChanged = {
                         handleEvent(

@@ -38,19 +38,18 @@ import app.songa.presentation.components.ibmplexsanshebrew
 import app.songa.presentation.theme.GreenPrimary
 
 @Composable
-fun PasswordInput(
+fun OldPasswordInput(
     modifier: Modifier = Modifier,
-    password: String,
-    onPasswordChanged: (phone: String) -> Unit,
-    onDoneClicked: () -> Unit,
+    oldPassword: String,
+    onOldPasswordChanged: (oldPassword: String) -> Unit,
+    onNextClicked: () -> Unit,
 ) {
     var isPasswordHidden by remember { mutableStateOf(false) }
-    val focusManager = LocalFocusManager.current
 
 
     Text(
         text = stringResource(
-            id = R.string.label_password),
+            id = R.string.label_old_password),
         fontFamily = ibmplexsanshebrew,
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
@@ -59,7 +58,7 @@ fun PasswordInput(
     Spacer(modifier = Modifier.height(10.dp))
 
     OutlinedTextField(
-        value = password ?:"",
+        value = oldPassword ?:"",
         visualTransformation = if (isPasswordHidden) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done,
@@ -67,15 +66,14 @@ fun PasswordInput(
         ),
         keyboardActions = KeyboardActions(
             onDone = {
-                onDoneClicked()
-                focusManager.clearFocus()
+                onNextClicked()
             }
         ),
         onValueChange = {
-            onPasswordChanged(it)
+            onOldPasswordChanged(it)
         },
         placeholder = { Text(stringResource(
-            id = R.string.label_password), fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
+            id = R.string.label_old_password), fontSize = 14.sp, fontFamily = ibmplexsanshebrew) },
         shape = RoundedCornerShape(15.dp),
         colors = TextFieldDefaults.textFieldColors(
             textColor = Color.Black,

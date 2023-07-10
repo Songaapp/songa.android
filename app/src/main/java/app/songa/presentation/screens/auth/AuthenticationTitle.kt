@@ -18,7 +18,11 @@ fun AuthenticationTitle(
         text = stringResource(
             if (authenticationMode == AuthenticationMode.SIGN_IN) {
                 R.string.label_sign_in_to_account
-            } else {
+            }
+            else if(authenticationMode == AuthenticationMode.CHANGE_PASSWORD || authenticationMode == AuthenticationMode.ACCOUNT_SETTINGS) {
+                R.string.label_edit_account
+            }
+            else {
                 R.string.label_sign_up_for_account
             }
         ),

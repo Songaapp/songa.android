@@ -14,6 +14,9 @@ data class ProfileModel(
     var email: String?,
     var avatar: String?,
     var address: String?,
+    var gender: String?,
+    var dateCreated: String?,
+    var updatedAt: String?,
     var id: String?,
     var sessionToken: String?
 )
